@@ -1,0 +1,16 @@
+/* style for landing page */
+#start-page {
+    
+    text-align: center;
+    padding-left: 150px;
+    padding-right: 150px;
+    padding-top: 50px;
+}
+
+#start-button {
+    color : white;
+    background-color : violet;
+    font-weight : bold;
+}
+
+/* style for question page */

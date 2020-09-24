@@ -46,7 +46,9 @@
               time by ten seconds
             </h6>
 
-            <button type="button" class="btn btn-primary start-button">Start Quiz</button>
+            <button type="button" class="btn btn-primary start-button">
+              Start Quiz
+            </button>
           </div>
           <div class="col-2"></div>
         </div>
@@ -60,26 +62,100 @@
             <h1 id="question">Commonly used data types DO NOT</h1>
 
             <ul id="list-of-questions">
-              <li id="0"><button type="button" class="btn btn-primary start-button">Primary</button></li>
-              <li id="1"><button type="button" class="btn btn-primary start-button">Primary</button></li>
-              <li id="2"><button type="button" class="btn btn-primary start-button">Primary</button></li>
-              <li id="3"><button type="button" class="btn btn-primary start-button">Primary</button></li>
+              <li id="0">
+                <button type="button" class="btn btn-primary start-button">
+                  Primary
+                </button>
+              </li>
+              <li id="1">
+                <button type="button" class="btn btn-primary start-button">
+                  Primary
+                </button>
+              </li>
+              <li id="2">
+                <button type="button" class="btn btn-primary start-button">
+                  Primary
+                </button>
+              </li>
+              <li id="3">
+                <button type="button" class="btn btn-primary start-button">
+                  Primary
+                </button>
+              </li>
             </ul>
-            <div id = "answer-footer">
-              <hr>
-              <p id = "result">Correct !</p>
+            <div id="answer-footer">
+              <hr />
+              <p id="result">Correct !</p>
             </div>
-            
           </div>
           <div class="col-2"></div>
         </div>
       </div>
 
       <!--Div for displaying completion page-->
-      <div id="completion-page"></div>
+      <div id="completion-page" class="container">
+        <div class="row">
+          <div class="col-2"></div>
+          <div class="col-8">
+            <h1>All done!</h1>
+          </div>
+          <div class="col-2"></div>
+        </div>
+
+        <div class="row">
+          <div class="col-2"></div>
+          <div class="col-8">
+            <h6>Your final score is <span id="final-score">22</span>.</h6>
+          </div>
+          <div class="col-2"></div>
+        </div>
+
+        <div class="row">
+          <div class="col-2"></div>
+          <div class="col-2" id="enter-initial"><h6>Enter Initials</h6></div>
+          <div class="col-3">
+            <input type="text" id="initials" placeholder="Initials" />
+          </div>
+          <div class="col-2 submit">
+            <button type="button" class="btn btn-primary start-button">
+              Submit
+            </button>
+          </div>
+          <div class="col-2"></div>
+        </div>
+      </div>
 
       <!--Div for displaying view scores page-->
-      <div id="scores-page"></div>
+      <div id="high-scores-page" class="container">
+        <div class="row">
+          <div class="col-2"></div>
+          <div class="col-8">
+            <h1>Highscores</h1>
+          </div>
+          <div class="col-2"></div>
+        </div>
+        <div class="row">
+          <div class="col-2"></div>
+          <div class="col-8">
+            <p class = "display-high-score">1. AB-22</p>
+            <p class = "display-high-score">2. AK-20</p>
+            <p class = "display-high-score">3. SH-15</p>
+          </div>
+          <div class="col-2"></div>
+        </div>
+        <div class="row">
+          <div class="col-2"></div>
+          <div class="col-8">
+            <button id="go-back" type="button" class="btn btn-primary start-button">
+              Go Back
+            </button>
+            <button id="clear-high-sore" type="button" class="btn btn-primary start-button">
+              Clear Highscores
+            </button>
+          </div>
+          <div class="col-2"></div>
+        </div>
+      </div>
     </main>
 
     <script

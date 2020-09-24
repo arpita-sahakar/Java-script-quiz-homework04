@@ -1,7 +1,7 @@
 /* style for landing page */
 #start-page {
     text-align: center;
-    display: none;
+    display: block;
 } 
 
 #view-score {
@@ -32,8 +32,39 @@ header {
 
 /* style for question page */
 #question-page{
-    display: block;
+    display: none;
 
 }
 
 
+
+
+/* Div for displaying completion */
+
+#enter-initial{
+    margin-top : 20px;
+
+}
+
+#initials{
+    margin-top : 10px;    
+}
+
+.submit{
+    text-align: left;
+}
+
+#completion-page{
+    display: none;
+}
+
+/* Div for displaying view scores page */
+
+.display-high-score{
+    background-color: rgb(224, 199, 224);
+    font-weight: 500;
+}
+
+#high-scores-page {
+    display: none;
+}

@@ -1,16 +1,39 @@
 /* style for landing page */
 #start-page {
-    
     text-align: center;
-    padding-left: 150px;
-    padding-right: 150px;
-    padding-top: 50px;
+    display: none;
+} 
+
+#view-score {
+    padding-left: 0px;
+    padding-right: 0px; 
+    margin-left: 0%;
+    margin-right: 0%;
 }
 
-#start-button {
+.high-score{
+    text-align: left;
+}
+
+.timer {
+    text-align: right;
+}
+
+header {
+    padding-bottom: 100px;
+}
+
+.start-button {
     color : white;
-    background-color : violet;
+    background-color : purple;
     font-weight : bold;
+    margin : 5px;
 }
 
 /* style for question page */
+#question-page{
+    display: block;
+
+}
+
+

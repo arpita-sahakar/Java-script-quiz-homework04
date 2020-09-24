@@ -11,32 +11,92 @@
     <title></title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" href="./Assets/css/styles.css" />
   </head>
   <body>
-    <!--Div for displaying landing page-->
-    <div id="start-page">
-      <h1>Coding Quiz Challenge</h1>
+    <header>
+      <div id="view-score" class="container-fluid">
+        <div class="row">
+          <div class="col-6 high-score">
+            <a href="#">View High Score</a>
+          </div>
+          <div class="col-6 timer">
+            Time:<span class="time-remaining">TEST TIME</span>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main>
+      <!--Div for displaying landing page-->
 
-      <h3>
-        Try to answer the following code-related questions within the time
-        limit. Keep in mind the incorrect answer will penalize your score time
-        by ten seconds
-      </h3>
+      <div id="start-page" class="container">
+        <div class="row">
+          <div class="col-2"></div>
+          <div class="col-8">
+            <h1>Coding Quiz Challenge</h1>
+            <h6>
+              Try to answer the following code-related questions within the time
+              limit. Keep in mind the incorrect answer will penalize your score
+              time by ten seconds
+            </h6>
 
-      <button id="start-button">Start Quiz</button>
-    </div>
+            <button type="button" class="btn btn-primary start-button">Start Quiz</button>
+          </div>
+          <div class="col-2"></div>
+        </div>
+      </div>
 
-    
-    <!--Div for displaying question page-->
-    <div id="question-page"></div>
+      <!--Div for displaying question page-->
+      <div id="question-page" class="container">
+        <div class="row">
+          <div class="col-2"></div>
+          <div class="col-8">
+            <h1 id="question">Commonly used data types DO NOT</h1>
 
-    <!--Div for displaying completion page-->
-    <div id="completion-page"></div>
+            <ul id="list-of-questions">
+              <li id="0"><button type="button" class="btn btn-primary start-button">Primary</button></li>
+              <li id="1"><button type="button" class="btn btn-primary start-button">Primary</button></li>
+              <li id="2"><button type="button" class="btn btn-primary start-button">Primary</button></li>
+              <li id="3"><button type="button" class="btn btn-primary start-button">Primary</button></li>
+            </ul>
+            <div id = "answer-footer">
+              <hr>
+              <p id = "result">Correct !</p>
+            </div>
+            
+          </div>
+          <div class="col-2"></div>
+        </div>
+      </div>
 
-    <!--Div for displaying view scores page-->
-    <div id="scores-page"></div>
+      <!--Div for displaying completion page-->
+      <div id="completion-page"></div>
 
+      <!--Div for displaying view scores page-->
+      <div id="scores-page"></div>
+    </main>
+
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+      integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+      crossorigin="anonymous"
+    ></script>
     <script src="" async defer></script>
   </body>
 </html>

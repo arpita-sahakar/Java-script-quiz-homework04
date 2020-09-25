@@ -11,11 +11,21 @@ var submitBtn = document.querySelector("#submit-btn");
 var initialsEl = document.querySelector("#initials");
 var goBackBtn = document.querySelector("#go-back");
 var clearHighScore = document.querySelector("#clear-high-sore");
+var scoreListEL = document.querySelector("#score-list");
 
-
-
+var highScoreArray = [];
 var timeRem = 10;
 var finalScore = 0;
+
+init();
+function init(){
+    highScoreArray = JSON.parse(localStorage.getItem("highScoreKey"));
+    if(highScoreArray === null){
+        highScoreArray = [];
+    }
+
+
+}
 
 //once the page in open total time is displayed
 displayTime();
@@ -42,26 +52,26 @@ startQuizBtn.addEventListener("click", function (event) {
 //when "View High Score" link is clicked it changes to "high-score-page"
 viewScoreLink.addEventListener("click", function (event) {
   event.preventDefault();
+  //render high-scores
+  renderHighScores();
   // go to High score page
   goToHighScorePage();
 });
 
-//when "Go Back " button is clicked the pages goes back to the first page ("start-page") 
-goBackBtn.addEventListener("click", function(event){
-
-    highScorePage.setAttribute("style", "display : none;");
-    startPage.setAttribute("style", "display : block;");
-    headerEl.setAttribute("style", "display : block;");
-    timeRem = 10;
-    displayTime();
-
-
+//when "Go Back " button is clicked the pages goes back to the first page ("start-page")
+goBackBtn.addEventListener("click", function (event) {
+  highScorePage.setAttribute("style", "display : none;");
+  startPage.setAttribute("style", "display : block;");
+  headerEl.setAttribute("style", "display : block;");
+  timeRem = 10;
+  displayTime();
 });
 
-clearHighScore.addEventListener("click", function(event){
-    event.preventDefault();
-    localStorage.clear();
-
+clearHighScore.addEventListener("click", function (event) {
+  event.preventDefault();
+  localStorage.clear();
+  scoreListEL.innerHTML = "";
+  highScoreArray = [];
 });
 
 // when submit button is clicked then score will be stored
@@ -72,8 +82,13 @@ submitBtn.addEventListener("click", function (event) {
   if (receivedInitials === "") {
     alert("Please provide some input");
   } else {
-    localStorage.setItem(receivedInitials, finalScore);
+    var highScoreValue = receivedInitials + "-" + finalScore;
+    highScoreArray.push(highScoreValue);
+
+    localStorage.setItem("highScoreKey", JSON.stringify(highScoreArray));
     initialsEl.value = "";
+    //render high-scores
+    renderHighScores();
     goToHighScorePage();
   }
 });
@@ -99,4 +114,14 @@ function goToHighScorePage() {
   startPage.setAttribute("style", "display : none;");
   highScorePage.setAttribute("style", "display : block;");
   headerEl.setAttribute("style", "display : none;");
+}
+
+function renderHighScores() {
+    scoreListEL.innerHTML = "";
+  for (i = 0; i < highScoreArray.length; i++) {
+    var pEl = document.createElement("p");
+    pEl.textContent = i + 1 + ". " + highScoreArray[i];
+    pEl.setAttribute("class", "display-high-score");
+    scoreListEL.appendChild(pEl);
+  }
 }

@@ -1,14 +1,10 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!-->
+
 <html class="no-js">
-  <!--<![endif]-->
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title></title>
+    <title>JavaScript Quiz</title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link
@@ -24,10 +20,10 @@
       <div id="view-score" class="container-fluid">
         <div class="row">
           <div class="col-6 high-score">
-            <a href="#">View High Score</a>
+            <a id = "view-high-score-link" href="#">View High Score</a>
           </div>
           <div class="col-6 timer">
-            Time:<span class="time-remaining">TEST TIME</span>
+            Time: <span id="time-remaining">TEST TIME</span>
           </div>
         </div>
       </div>
@@ -46,7 +42,7 @@
               time by ten seconds
             </h6>
 
-            <button type="button" class="btn btn-primary start-button">
+            <button type="button" class="btn btn-primary start-button" id="start-quiz-btn">
               Start Quiz
             </button>
           </div>
@@ -117,7 +113,7 @@
             <input type="text" id="initials" placeholder="Initials" />
           </div>
           <div class="col-2 submit">
-            <button type="button" class="btn btn-primary start-button">
+            <button type="button" class="btn btn-primary start-button" id = "submit-btn">
               Submit
             </button>
           </div>
@@ -173,6 +169,6 @@
       integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
       crossorigin="anonymous"
     ></script>
-    <script src="" async defer></script>
+    <script src="./Assets/scripts/script.js" async defer></script>
   </body>
 </html>

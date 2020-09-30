@@ -15,12 +15,16 @@ var scoreListEL = document.querySelector("#score-list");
 var questionEL = document.querySelector("#question");
 var ulEl = document.querySelector("#list-of-options");
 var ansFooter = document.querySelector("#answer-footer");
+var resultEl = document.querySelector("#result");
 
 //Initialize highscore array with empty array
 var highScoreArray = [];
 
+//stores the id of the "displayed question"
+var displayedQuesId = 0;
+
 //Initialize time remaining
-var timeRem = 500;
+var timeRem = 60;
 var finalScore = 0;
 
 //Define questions
@@ -103,7 +107,7 @@ goBackBtn.addEventListener("click", function (event) {
   startPage.setAttribute("style", "display : block;");
   headerEl.setAttribute("style", "display : block;");
   //Reset timeRem to initial value;
-  timeRem = 500;
+  timeRem = 60;
   displayTime();
 });
 
@@ -118,7 +122,7 @@ clearHighScore.addEventListener("click", function (event) {
   highScoreArray = [];
 });
 
-// when submit button is clicked then score will be stored
+// when submit button is clicked then score will be stored with initials to the local storage as well as array
 submitBtn.addEventListener("click", function (event) {
   event.preventDefault();
   var receivedInitials = initialsEl.value;
@@ -141,41 +145,72 @@ function goToQuestionPage() {
   //Hide Start page and display Question page
   startPage.setAttribute("style", "display : none;");
   questionPage.setAttribute("style", "display : block;");
-   //Hide footer
+  //Hide footer
   ansFooter.setAttribute("style", "display : none;");
-  //Display first question
-  questionEL.textContent = questionArray[0].ques;
 
   //Display options for first question (buttons in li)
+  displayQuestion(displayedQuesId);
+}
+
+ulEl.addEventListener("click", function (event) {
+  event.preventDefault();
+  if (event.target.matches("button")) {
+    var selectedOptId = event.target.parentElement.id;
+    var selectedQuesId = event.target.parentElement.getAttribute("ques-id");
+    //display correct or wrong todo : capture question id
+    if (
+      questionArray[selectedQuesId].opt[selectedOptId] ===
+      questionArray[selectedQuesId].ans
+    ) {
+      resultEl.textContent = "Correct !";
+      //if answer is correct the add 10 to the score
+      finalScore = finalScore + 10;
+    } else {
+      resultEl.textContent = "Wrong !";
+      //else -10 from remaining time
+      timeRem = timeRem - 10;
+      if (timeRem < 0) {
+        timeRem = 0;
+      }
+    }
+    ansFooter.setAttribute("style", "display : block;");
+
+    //display next question
+
+    displayedQuesId++;
+    if (displayedQuesId >= questionArray.length) {
+      displayedQuesId = 0;
+      timeRem = 0;
+      goToCompletionPage();
+    } else {
+      displayQuestion(displayedQuesId);
+    }
+  }
+});
+
+//function to display question as per the index passed
+function displayQuestion(displayedQuesId) {
+  //Display first question
+  questionEL.textContent = questionArray[displayedQuesId].ques;
+
+  console.log("Received index of questionArray is " + displayedQuesId);
+  //Display options for question (buttons in li)
   ulEl.innerHTML = "";
-  for (i = 0; i < questionArray[0].opt.length; i++) {
+  for (i = 0; i < questionArray[displayedQuesId].opt.length; i++) {
     var liEl = document.createElement("li");
     //  liEl.innerHTML = "<button type=\"button\" class=\"btn btn-primary start-button\">" + questionArray[0].opt[i] + "</button>";
     liEl.setAttribute("id", i);
+    liEl.setAttribute("ques-id", displayedQuesId);
 
     var optBtn = document.createElement("button");
     optBtn.setAttribute("type", "button");
     optBtn.setAttribute("class", "btn btn-primary start-button");
-    optBtn.textContent = questionArray[0].opt[i];
+    optBtn.textContent = questionArray[displayedQuesId].opt[i];
     liEl.appendChild(optBtn);
 
     ulEl.appendChild(liEl);
   }
-  
 }
-
-ulEl.addEventListener("click", function(event){
-    event.preventDefault();
-    if(event.target.matches("button")){
-    
-        
-        //display correct or wrong todo : capture question id 
-        
-
-        //if answer is correct the add 10 to the score else -10 from remaining time
-        //display next question 
-    }
-});
 
 //function to display time near timer
 function displayTime() {
